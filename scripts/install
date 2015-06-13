@@ -12,7 +12,8 @@ sudo yunohost app setting $APP public_site -v $public_site
 if [[ -n $(sudo yunohost domain list | grep $domain) ]]; then
     echo 'the domain is already installed'
 else
-    sudo yunohost domain add $domain
+    #sudo yunohost domain add '$domain'
+    echo 'you need to setup $domain before'
 fi
 
 # Check domain/path availability
