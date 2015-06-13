@@ -1,0 +1,28 @@
+{
+    "name": "Ajax Google Apis",
+    "id": "ajaxgoogleapis",
+    "description": {
+        "en": "This apps create a mirror of ajax.googleapis.com",
+        "fr": "Cette application créé un mirroir de ajax.googleapis.com"
+    },
+    "maintainer": {
+        "name": "ljf",
+        "email": "valentin@grimaud.me"
+    },
+    "multi_instance": "false",
+    "arguments": {
+        "install" : [
+            {
+                "name": "public_site",
+                "ask": {
+                    "en": "Could non member access this mirror ?",
+                    "fr": "Une personne non membre peut elle accéder à ce mirroir ?"
+                },
+                "choices": ["Yes", "No"],
+                "default": "Yes"
+            }
+
+
+        ]
+    }
+}
