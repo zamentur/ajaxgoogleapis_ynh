@@ -3,8 +3,6 @@
 APP='ajaxgoogleapis'
 domain=$(sudo yunohost app setting $APP domain)
 
-#Remove ajax.googleapis.com domain
-sudo yunohost domain remove 'ajax.googleapis.com'
 
 sudo rm -rf /var/www/$APP
 sudo rm -f /etc/nginx/conf.d/$domain.d/$APP.conf
