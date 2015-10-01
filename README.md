@@ -4,6 +4,9 @@ A mirror of ajax.googleapis.com for YunoHost
 ## Why this app
 This apps is for people who want visit website including script from ajax.googleapis.com without using the real ajax.googleapis.com. Indeed, you could preferer use your own copy of jquery, angular etc... With this app you can avoid (in certain case) to send to google which websites you visit or simply that you are connected.
 
+## Caution 
+It doesn't work with https due to ssl verification (hsts "sec_error_unknown_issuer" #3). You should install your CA.crt in your browser. In firefox, delete cert8.db and cert_override.txt in your ~/.mozilla/firefox/XXXXX/ directory could fix this issue.
+
 ## How to use it
 You need to add firstly the domain ajax.googleapis.com in your yunohost instance. You can do it on the web admin or with this command line:
 ```shell
