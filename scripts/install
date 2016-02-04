@@ -1,6 +1,6 @@
 #!/bin/bash
+APP=${!#}
 
-APP='ajaxgoogleapis'
 # Retrieve arguments
 public_site=$1
 domain='ajax.googleapis.com'
@@ -26,7 +26,7 @@ fi
 # Copy files to the right place
 final_path=/var/www/$APP
 sudo mkdir -p $final_path
-sudo cp -a ../sources/* $final_path
+sudo cp -a ../sources/. $final_path
 
 # Set permissions to roundcube directory
 sudo chown -R www-data: $final_path

@@ -1,5 +1,5 @@
 #!/bin/bash
-APP='strut'
+APP=${!#}
 
 # Retrieve arguments
 domain=$(sudo yunohost app setting $APP domain)
@@ -25,7 +25,7 @@ sudo cp ../conf/nginx.conf /etc/nginx/conf.d/$domain.d/$APP.conf
 # Reload Nginx
 sudo service nginx reload
 if [ "$public_site" = "Yes" ];
-then      
-    sudo yunohost app setting $APP skipped_uris -v "/"  
+then
+    sudo yunohost app setting $APP skipped_uris -v "/"
 fi
 sudo yunohost app ssowatconf

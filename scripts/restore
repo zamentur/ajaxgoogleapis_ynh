@@ -1,0 +1,53 @@
+#!/bin/bash
+APP=${!#}
+
+# The parameter $1 is the backup directory location dedicated to the app
+BACKUP_DIR=$1
+
+
+domain='ajax.googleapis.com'
+path='/ajax/libs'
+public_site=$(sudo yunohost app setting $APP public_site)
+
+#Create ajax.googleapis.com domain
+if [[ -n $(sudo yunohost domain list | grep $domain) ]]; then
+    echo 'the domain is already installed'
+else
+    #sudo yunohost domain add '$domain'
+    echo 'you need to setup $domain before'
+fi
+
+# Check domain/path availability
+sudo yunohost app checkurl $domain$path -a $APP
+if [[ ! $? -eq 0 ]]; then
+    echo "There is already an app on this URL : $domain$path" | sudo tee /dev/stderr
+    exit 1
+fi
+
+# Restore the app files
+final_path=/var/www/$APP
+
+if [ -d $final_path ]; then
+    echo "There is already a directory: $final_path " | sudo tee /dev/stderr
+    exit 1
+fi
+sudo cp -a "${BACKUP_DIR}/www" $final_path
+sudo chown -R www-data: $final_path
+
+# Restore the conf files
+conf=/etc/nginx/conf.d/$domain.d/$APP.conf
+if [ -f $conf ]; then
+    echo "There is already a nginx conf file at this path: $conf " | sudo tee /dev/stderr
+    exit 1
+fi
+sudo cp -a "${BACKUP_DIR}/conf/nginx.conf" $conf
+
+# Reload Nginx
+sudo service nginx reload
+
+# Set ssowat config
+if [ "$public_site" = "Yes" ];
+then
+	sudo yunohost app setting $APP skipped_uris -v "/"
+fi
+sudo yunohost app ssowatconf
