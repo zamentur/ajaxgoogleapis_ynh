@@ -1,6 +1,8 @@
 # ajaxgoogleapis_ynh
 A mirror of ajax.googleapis.com for YunoHost
 
+CAUTION: THIS APP IS NO LONGER MAINTAINED, YOU CAN USE THE FIREFOX PLUGIN "DECENTRALEYES" OR SEE THE YUNOHOST APP PI-HOLE.
+
 ## Why this app
 This apps is for people who want visit website including script from ajax.googleapis.com without using the real ajax.googleapis.com. Indeed, you could preferer use your own copy of jquery, angular etc... With this app you can avoid (in certain case) to send to google which websites you visit or simply that you are connected.
 
