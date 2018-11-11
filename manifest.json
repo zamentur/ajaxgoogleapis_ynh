@@ -6,9 +6,12 @@
         "fr": "Cette application créé un mirroir de ajax.googleapis.com"
     },
     "maintainer": {
-        "name": "ljf",
-        "email": "valentin@grimaud.me"
+        "name": "-",
+        "email": "-"
     },
+    "previous_maintainers": [{
+        "name": "ljf"
+    }],
     "multi_instance": "false",
     "arguments": {
         "install" : [
